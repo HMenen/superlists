@@ -3,10 +3,18 @@ from django.urls import resolve
 from lists.views import home_page
 from django.http import HttpRequest
 from lists.models import Item, List
+import os
 
 # Create your tests here.
 
 class NewListTest(TestCase):
+
+	# def SetUp(self):
+	# 	self.browser = webdriver.FireFox()
+		# staging_server = os.environ.get('STAGING_SERVER')
+		# if staging_server:
+		# 	self.live_server_url = 'http://'+staging_server
+
 	
 	def test_can_save_a_POST_request(self):
 		response = self.client.post('/lists/new', data={'item_text': 'A new list item'})

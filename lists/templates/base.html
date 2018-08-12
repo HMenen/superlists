@@ -9,14 +9,42 @@
     <title>{% block title %}base{% endblock %}</title>
 
     <!-- Bootstrap -->
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="/static/boostrap/css/boostrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/base.css">
+
   </head>
 
-  
+
   <body>
-    <h1>Hello, world!</h1>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <h1>Hello, world!</h1>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
     <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> -->
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col_md_6 col-md-offset-3 jumbotron">
+          <div class="test-center">
+            <h1>{% block header_text %}{% endblock %}</h1>
+              <form method="POST" action="{% block form_action %}{% endblock %}">
+                <input class="form-control input-lg" name="item_text" id="id_new_item" placeholder="Enter a to do item"/>
+                {% csrf_token %}
+              </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset 3">
+          {% block table %}
+          {% endblock %}
+        </div>
+      </div>
+
+      
+    </div>
+
   </body>
 </html>
